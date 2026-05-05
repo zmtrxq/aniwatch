@@ -1,3 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 1180px;
+  background: #f7f9fc;
+  color: #111827;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+}
+
 .app-header {
   border-bottom: 1px solid #e3e8ef;
   background: #ffffff;
@@ -5,18 +23,25 @@
 
 .header-inner {
   width: 1120px;
-  height: 72px;
   margin: 0 auto;
+  height: 72px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .brand {
-  color: #111827;
-  font-size: 24px;
-  font-weight: 700;
+  display: flex;
+  align-items: center;
+  color: #121826;
   text-decoration: none;
+}
+
+.brand img {
+  width: 62px;
+  height: 62px;
+  object-fit: contain;
+  border-radius: 8px;
 }
 
 .nav-links {
@@ -57,6 +82,56 @@
   color: #121826;
 }
 
+.muted-count {
+  color: #64748b;
+  font-size: 15px;
+}
+
+.search-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.search-form input {
+  width: 420px;
+  height: 44px;
+  padding: 0 14px;
+  border: 1px solid #cfd8e3;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.search-form button,
+.favorite-button,
+.rating-form button,
+.auth-form button,
+.review-form button {
+  height: 44px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 8px;
+  background: #1f2937;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.search-form button:hover,
+.favorite-button:hover,
+.rating-form button:hover,
+.auth-form button:hover,
+.review-form button:hover,
+.nav-link:hover {
+  transform: translateY(-2px);
+}
+
+.favorite-button.saved {
+  background: #2563eb;
+}
+
 .status-box {
   margin: 14px 0 20px;
   padding: 14px 16px;
@@ -78,12 +153,205 @@
   background: #f0fdf4;
 }
 
-.empty-state {
-  padding: 26px;
+.anime-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.anime-card {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 18px;
+  min-height: 228px;
+  padding: 14px;
   border: 1px solid #d9e1ec;
   border-radius: 8px;
   background: #ffffff;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.anime-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
+}
+
+.anime-cover {
+  display: block;
+  width: 150px;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #eef2f7;
+}
+
+.anime-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.rating-form {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.rating-form input {
+  width: 78px;
+  height: 38px;
+  padding: 0 8px;
+  border: 1px solid #cfd8e3;
+  border-radius: 8px;
+}
+
+.rating-form button {
+  height: 38px;
+  padding: 0 12px;
+  font-size: 14px;
+}
+
+.anime-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.anime-status {
+  width: fit-content;
+  padding: 9px 12px;
+  border: 1px solid #d9e1ec;
+  border-radius: 8px;
+  color: #7c2d12;
+  background: #fff7ed;
+  font-size: 14px;
+}
+
+.anime-title {
+  color: #1f2937;
+  text-decoration: none;
+}
+
+.anime-title h2 {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.anime-stats {
+  display: flex;
+  gap: 28px;
+  color: #475569;
+}
+
+.anime-stats strong {
+  display: block;
+  color: #111827;
+  font-size: 20px;
+}
+
+.genre-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.genre-chip {
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: #334155;
+  background: #eef2ff;
+  font-size: 14px;
+}
+
+.card-actions {
+  margin-top: auto;
+}
+
+.detail-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+.detail-cover {
+  width: 280px;
+  border-radius: 8px;
+  border: 1px solid #d9e1ec;
+  background: #ffffff;
+}
+
+.detail-side .rating-form {
+  margin-top: 12px;
+}
+
+.detail-panel {
+  padding: 22px;
+  border: 1px solid #d9e1ec;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.detail-panel h1 {
+  margin: 0 0 16px;
+  font-size: 34px;
+  color: #111827;
+}
+
+.detail-meta {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.detail-meta div {
+  padding: 12px;
+  border-radius: 8px;
+  background: #f8fafc;
+  border: 1px solid #e3e8ef;
+}
+
+.detail-meta span {
+  display: block;
   color: #64748b;
+  font-size: 13px;
+}
+
+.detail-meta strong {
+  display: block;
+  margin-top: 4px;
+  color: #111827;
+  font-size: 17px;
+}
+
+.synopsis {
+  color: #334155;
+  line-height: 1.65;
+}
+
+.review-form {
+  margin-top: 22px;
+  display: grid;
+  gap: 10px;
+}
+
+.review-form label {
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.review-form textarea {
+  min-height: 100px;
+  padding: 12px;
+  resize: vertical;
+  border: 1px solid #cfd8e3;
+  border-radius: 8px;
+  font: inherit;
 }
 
 .auth-page {
@@ -99,10 +367,18 @@
   border: 1px solid #d9e1ec;
   border-radius: 8px;
   background: #ffffff;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+.auth-card img {
+  width: 84px;
+  height: 84px;
+  object-fit: contain;
+  border-radius: 8px;
 }
 
 .auth-card h1 {
-  margin: 0 0 18px;
+  margin: 18px 0;
   font-size: 30px;
 }
 
@@ -119,18 +395,6 @@
   font-size: 16px;
 }
 
-.auth-form button {
-  height: 44px;
-  padding: 0 18px;
-  border: 0;
-  border-radius: 8px;
-  background: #1f2937;
-  color: #ffffff;
-  font-size: 15px;
-  font-weight: 700;
-  cursor: pointer;
-}
-
 .auth-card p {
   margin: 16px 0 0;
   color: #475569;
@@ -139,4 +403,12 @@
 .auth-card a {
   color: #2563eb;
   font-weight: 700;
+}
+
+.empty-state {
+  padding: 26px;
+  border: 1px solid #d9e1ec;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #64748b;
 }
