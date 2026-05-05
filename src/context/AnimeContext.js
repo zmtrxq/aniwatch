@@ -182,3 +182,4 @@ export function AnimeProvider({ children }) {
 export function useAnime() {
   return useContext(AnimeContext);
 }
+

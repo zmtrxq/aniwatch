@@ -56,3 +56,4 @@ function AnimeCard({ anime }) {
 }
 
 export default AnimeCard;
+
