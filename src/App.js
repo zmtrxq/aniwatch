@@ -2,6 +2,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
 import { AuthProvider, useAuth } from './context/AuthContext';
+import { AnimeProvider } from './context/AnimeContext';
 import AnimeDetailsPage from './pages/AnimeDetailsPage';
 import FavoritesPage from './pages/FavoritesPage';
 import HomePage from './pages/HomePage';
@@ -14,7 +15,7 @@ function AppRoutes() {
   return (
     <BrowserRouter future={{ v7_relativeSplatPath: true, v7_startTransition: true }}>
       {user ? (
-        <>
+        <AnimeProvider>
           <Header />
           <main className="page">
             <Routes>
@@ -25,7 +26,7 @@ function AppRoutes() {
               <Route path="/signin" element={<Navigate to="/" />} />
             </Routes>
           </main>
-        </>
+        </AnimeProvider>
       ) : (
         <main className="auth-page">
           <Routes>
